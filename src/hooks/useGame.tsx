@@ -16,9 +16,11 @@ export const useGame = () => {
     const [answersList, setAnswersList]:any = useState([]);
     const [selectedAnswer, setSelectedAnswer]:any = useState('');
     const [counter, setCounter] = useState(30);
+    const [isLoading, setIsLoading] = useState(false);
 
 
     const handleStartGame = async () => {
+        setIsLoading(true);
         try {
             const { results } = await leerPreguntas();
             const questions = results.map((question:any, index:number) => ({...question, id: index}));
@@ -28,10 +30,12 @@ export const useGame = () => {
             localStorage.removeItem('answers');
             localStorage.setItem('questions', JSON.stringify(questions));
             localStorage.setItem('gameStatus','playing');
+            setIsLoading(false);
             navigate(`/question/0`);
             
         } catch (error:any) {
             console.log(error);
+            navigate(`/`);
             throw new Error(error);
         }
     }
@@ -74,6 +78,7 @@ export const useGame = () => {
         setSelectedAnswer,
         counter,
         currentQuestionRef,
+        isLoading,
         setCounter,
         handleStartGame,
         handleAnswerClick,

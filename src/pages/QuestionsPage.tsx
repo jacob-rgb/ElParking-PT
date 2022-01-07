@@ -4,7 +4,7 @@ import { useLocation, useNavigate, useParams } from "react-router-dom"
 import { ResultsComponent } from "../components/ResultsComponent";
 import { randomizeArray, replaceSpecialCharacters } from "../helpers/questions";
 import { useGame } from "../hooks/useGame";
-import { Answer, AnswersBox, ButtonsBox, MainCont, MyButton, Result, ResultsBox, Subtitle, Title, Title2 } from "../styled/styledComponents"
+import { Answer, AnswersBox, ButtonsBox, MainCont, MyButton, ProgressBar, ProgressBarStatus, Result, ResultsBox, Subtitle, Timer, TimerNumber, TimerStatus, Title, Title2 } from "../styled/styledComponents"
 
 export const QuestionsPage = () => {
 
@@ -41,8 +41,15 @@ export const QuestionsPage = () => {
             {
              currentQuestionRef.current?.question && 
                    (<>
-                        <Title>TRIVIDABO { counter }</Title>
+                        <Title>TRIVIDABO</Title>
+                        <Timer counter={counter}>
+                            <TimerStatus  statusPercent={(30 - counter) * (100 / 30)}  />
+                            <TimerNumber>{ counter }</TimerNumber>
+                        </Timer>
                         <Title2>{`QUESTION ${Number(id) < 10 ? Number(id) + 1 : 10} OF 10`}</Title2>
+                        < ProgressBar>
+                            <ProgressBarStatus progressPercent={(Number(id) + 1) * 10} />
+                        </ProgressBar>
                         <Subtitle>{replaceSpecialCharacters(currentQuestionRef.current.question)}</Subtitle>
                         <AnswersBox>
                             {

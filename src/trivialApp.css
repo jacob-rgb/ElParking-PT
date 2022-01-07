@@ -19,7 +19,7 @@ html, body {
 
 .imgRuleta {
     max-width: 200px;
-    animation: rotar .6s linear infinite ;
+    /* animation: rotar .6s linear infinite ; */
 }
 
 @keyframes rotar {

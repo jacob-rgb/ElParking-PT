@@ -144,4 +144,75 @@ export const Result = styled.div`
     animation:${fade} .6s linear forwards;
 `;
 
+export const RuletaInit:any = styled.img`
+max-width: 200px;
+animation: ${({animated}:any) => animated ? css`${rotate} .6s linear infinite` : 'none'};
+`;
+
+export const ProgressBar = styled.div`
+    width: 80%;
+    height: 8px;
+    margin: 10px auto;
+    background-color: lightgrey;
+    border-radius: 40px;
+`;
+
+export const ProgressBarStatus: any = styled.div`
+    width:${({progressPercent}:any) => css`${progressPercent}%`};
+    height: 8px;
+    background-color: green;
+    border-radius: 40px;
+    transition: all .4s ease;
+`;
+
+export const Timer:any = styled.div`
+    position:relative;
+    height:60px;
+    width:60px;
+    color: white;
+    background-color: ${({counter}:any) => handleColor(counter)};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 200px;
+    overflow:hidden;
+    border:4px solid lightgrey;
+    transition: all .4s ease;
+`;
+
+export const TimerStatus:any = styled.div`
+    position:absolute;
+    top:0px;
+    left:0;
+    height:100%;
+    width:${({statusPercent = 0}:any) => css`${statusPercent}%`};
+    color: white;
+    background-color: #5a5690;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index:2;
+    transition: all .3s ease;
+`;
+
+export const TimerNumber:any = styled.div`
+    position:absolute;
+    height:60px;
+    width:60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 200px;
+    z-index:9;
+`;
+
+const handleColor = (counterN:number): string => {
+    if(counterN > 20) {
+        return 'green'
+    } else if(counterN < 20 && counterN > 10) {
+        return '#FFCF45'
+    }
+    return 'red'
+}
+
 
