@@ -126,6 +126,7 @@ export const ButtonsBox = styled.div`
     justify-content: center;
     gap: 20px;
     margin-top:20px;
+    margin-bottom:20px;
     animation:${fade} .6s linear forwards;
 `;
 

@@ -6,7 +6,8 @@ import {
     Route,
     Navigate
   } from "react-router-dom";
-import { refrescarPreguntas, setAllAnswers } from "../actions/questions";
+import { addPoint } from "../actions/game";
+import { refrescarPreguntas, setAllAnswers } from "../actions/game";
 import { InitPage } from "../pages/InitPage";
 import { QuestionsPage } from "../pages/QuestionsPage";
 import { ResultsPage } from "../pages/ResultsPage";
@@ -20,11 +21,14 @@ import { ResultsPage } from "../pages/ResultsPage";
       if(localStorage.getItem('answers')) {
         dispatch(setAllAnswers(JSON.parse(localStorage.getItem('answers')!)));
     }
-        if(localStorage.getItem('gameStatus') && localStorage.getItem('lastView')) {
-          if(localStorage.getItem('questions')) {
-              dispatch(refrescarPreguntas(JSON.parse(localStorage.getItem('questions')!)));
-          }
-        }
+    if(localStorage.getItem('gamePoints')) {
+      dispatch(addPoint(JSON.parse(localStorage.getItem('gamePoints')!)));
+  }
+    if(localStorage.getItem('gameStatus') && localStorage.getItem('lastView')) {
+      if(localStorage.getItem('questions')) {
+          dispatch(refrescarPreguntas(JSON.parse(localStorage.getItem('questions')!)));
+      }
+    }
     }, [])
     
     

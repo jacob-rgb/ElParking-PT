@@ -1,12 +1,13 @@
 import { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { addAnswer, refrescarPreguntas, resetAnswers } from "../actions/questions";
+import { addPoint, resetPoint } from "../actions/game";
+import { addAnswer, refrescarPreguntas, resetAnswers } from "../actions/game";
 import { leerPreguntas } from "../helpers/questions";
 
 export const useGame = () => {
 
-    const { questions } = useSelector((state:any) => state.questions);
+    const { questions, score } = useSelector((state:any) => state.game);
     
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -27,6 +28,8 @@ export const useGame = () => {
             if(!results || !questions) return window.alert('Ha habido un error a la hora de iniciar el juego');
             dispatch(refrescarPreguntas(questions));
             dispatch(resetAnswers({}));
+            dispatch(resetPoint());
+            localStorage.removeItem('gamePoints');
             localStorage.removeItem('answers');
             localStorage.setItem('questions', JSON.stringify(questions));
             localStorage.setItem('gameStatus','playing');
@@ -47,6 +50,7 @@ export const useGame = () => {
     const handleAnswerSubmit = (id:string | undefined) => {
         const finalAnswer = {...currentQuestionRef.current, selectedAnswer: selectedAnswer !== '' ? selectedAnswer : 'Skipped'};
         const latestAnswers = JSON.parse(localStorage.getItem('answers')!) || [];
+        handleCheckAnswer(selectedAnswer, currentQuestionRef.current.correct_answer);
         localStorage.setItem('answers', JSON.stringify([...latestAnswers, finalAnswer]) );
         dispatch(addAnswer(finalAnswer));
         setSelectedAnswer('');
@@ -67,6 +71,13 @@ export const useGame = () => {
                 }
                 return prev - 1;
             });
+        }
+    };
+
+    const handleCheckAnswer = (answer:string, correctAnswer: string) => {
+        if(answer === correctAnswer) {
+            dispatch(addPoint(1));
+            localStorage.setItem('gamePoints', JSON.stringify(score.points + 1));
         }
     }
 

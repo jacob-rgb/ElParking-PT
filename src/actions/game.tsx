@@ -1,4 +1,4 @@
-import { types } from "../types/types"
+import { types } from "../types/types";
 
 
 export const refrescarPreguntas = (event: any) => ({
@@ -19,4 +19,14 @@ export const resetAnswers = (event:any) => ({
 export const setAllAnswers = (event:any) => ({
     type: types.setAllAnswers,
     payload:event
+});
+
+export const addPoint = (event:number) => ({
+    type: types.addPoint,
+    payload: event
+})
+
+export const resetPoint = () => ({
+    type: types.resetPoints,
+    payload: {},
 })

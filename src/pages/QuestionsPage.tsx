@@ -4,11 +4,11 @@ import { useLocation, useNavigate, useParams } from "react-router-dom"
 import { ResultsComponent } from "../components/ResultsComponent";
 import { randomizeArray, replaceSpecialCharacters } from "../helpers/questions";
 import { useGame } from "../hooks/useGame";
-import { Answer, AnswersBox, ButtonsBox, MainCont, MyButton, ProgressBar, ProgressBarStatus, Result, ResultsBox, Subtitle, Timer, TimerNumber, TimerStatus, Title, Title2 } from "../styled/styledComponents"
+import { Answer, AnswersBox, ButtonsBox, MainCont, MyButton, ProgressBar, ProgressBarStatus, Subtitle, Timer, TimerNumber, TimerStatus, Title, Title2 } from "../styled/styledComponents";
 
 export const QuestionsPage = () => {
 
-    const { answers } = useSelector((state:any) => state.questions);
+    const { answers } = useSelector((state:any) => state.game);
 
     const { id } = useParams();
     const navigate = useNavigate();
@@ -72,7 +72,10 @@ export const QuestionsPage = () => {
             }
             {
                 answers.length > 0 && (
-                    < ResultsComponent resultsList={answers} reverse/>
+                    <>
+                        <Title2>LAST RESULTS: </Title2>
+                        < ResultsComponent resultsList={answers} reverse/>
+                    </>
                 )
             }
         </MainCont>

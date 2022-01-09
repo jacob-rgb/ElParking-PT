@@ -16,6 +16,7 @@ export const InitPage = () => {
         } else {
             localStorage.removeItem('answers');
             localStorage.removeItem('questions');
+            localStorage.removeItem('gamePoints');
         }
     }, [])
     

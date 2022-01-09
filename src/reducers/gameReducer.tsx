@@ -2,9 +2,13 @@ import { types } from "../types/types";
 
 const initialState = {
     questions:[],
-    answers: []
+    answers: [],
+    score: {
+        points: 0,
+        nQuestions: 10
+    }
 }
-export const questionsReducer = (state = initialState , action:any) => {
+export const gameReducer = (state = initialState , action:any) => {
     switch (action.type) {
         case types.refreshQuestions:
             return {
@@ -27,7 +31,25 @@ export const questionsReducer = (state = initialState , action:any) => {
             return {
                 ...state,
                 answers: action.payload
-            }
+            };
+        
+        case types.addPoint:
+            return {
+                ...state,
+                score: {
+                    ...state.score,
+                    points: state.score.points + action.payload,
+                }
+            };
+        
+        case types.resetPoints:
+            return {
+                ...state,
+                score: {
+                    ...state.score,
+                    points:0,
+                }
+            };
         default:
             return state;
     }

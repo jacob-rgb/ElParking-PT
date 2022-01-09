@@ -1,6 +1,4 @@
-import { useEffect } from "react";
-import { Provider, useDispatch } from "react-redux";
-import { refrescarPreguntas } from "./actions/questions";
+import { Provider } from "react-redux";
 import { AppRouter } from "./routers/AppRouter";
 import {store} from './store/store';
 import { AppContainer } from "./styled/styledComponents";
