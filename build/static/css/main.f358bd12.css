@@ -1,0 +1,2 @@
+*{margin:0;padding:0}body,html{height:100%;max-width:100vw;min-height:100vh;overflow-x:hidden;width:100%}.aligned{align-items:center;display:flex;gap:6px}.imgRuleta{max-width:200px}@-webkit-keyframes rotar{0%{-webkit-transform:rotate(0deg);transform:rotate(0deg)}to{-webkit-transform:rotate(1turn);transform:rotate(1turn)}}@keyframes rotar{0%{-webkit-transform:rotate(0deg);transform:rotate(0deg)}to{-webkit-transform:rotate(1turn);transform:rotate(1turn)}}
+/*# sourceMappingURL=main.f358bd12.css.map*/

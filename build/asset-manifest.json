@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/static/css/main.f358bd12.css",
+    "main.js": "/static/js/main.dca707fa.js",
+    "static/media/ruleta.png": "/static/media/ruleta.85fd33f27e4d338016d0.png",
+    "index.html": "/index.html",
+    "main.f358bd12.css.map": "/static/css/main.f358bd12.css.map",
+    "main.dca707fa.js.map": "/static/js/main.dca707fa.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f358bd12.css",
+    "static/js/main.dca707fa.js"
+  ]
+}
