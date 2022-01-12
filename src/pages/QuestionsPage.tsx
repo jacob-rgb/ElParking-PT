@@ -8,14 +8,14 @@ import { Answer, AnswersBox, ButtonsBox, MainCont, MyButton, ProgressBar, Progre
 
 export const QuestionsPage = () => {
 
-    const { answers } = useSelector((state:any) => state.game);
+    const { answers, questions, score } = useSelector((state:any) => state.game);
 
     const { id } = useParams();
     const navigate = useNavigate();
     const location = useLocation(); 
     const intervalRef:any = useRef(); 
 
-    const {questions,answersList,setAnswersList,selectedAnswer, counter, currentQuestionRef, handleAnswerClick, handleAnswerSubmit, handleCountDown} = useGame();
+    const {answersList,setAnswersList,selectedAnswer, counter, currentQuestionRef, handleAnswerClick, handleAnswerSubmit, handleCountDown} = useGame(questions, score);
 
     useEffect(() => {
         if(Number(id) > 9 ) {

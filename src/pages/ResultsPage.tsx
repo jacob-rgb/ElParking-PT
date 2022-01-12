@@ -6,8 +6,8 @@ import { ButtonsBox, MainCont, MyButton, Title, Title2 } from "../styled/styledC
 
 export const ResultsPage = () => {
 
-    const { answers, score } = useSelector((state:any) => state.game);
-    const  { handleStartGame } = useGame();
+    const { answers, questions , score } = useSelector((state:any) => state.game);
+    const  { handleStartGame } = useGame(questions, score);
     const navigate = useNavigate();
     
     return (

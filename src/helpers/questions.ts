@@ -13,7 +13,7 @@ export const leerPreguntas = async ():Promise<any> => {
 }
 
 export const randomizeArray = (array:any[]): any[] => {
-    return array.sort(function() {return Math.random() - 0.5});
+    return [...array.sort(function() {return Math.random() - 0.5})];
 }
 
 export const replaceSpecialCharacters = (text:string):string => {

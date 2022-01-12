@@ -1,8 +1,8 @@
+
 const baseUrl = 'https://opentdb.com';
 
 
-
-const fetchSinToken = ( endPoint: string, data?: any, method:string = 'GET' ): Promise<Response> => {
+const fetchSinToken = ( endPoint: string, data?: any, method:string = 'GET' ): Promise<any> => {
     const url =`${baseUrl}/${endPoint}`;
 
     if( method === 'GET') {

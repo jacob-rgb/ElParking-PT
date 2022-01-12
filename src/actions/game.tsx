@@ -1,6 +1,5 @@
 import { types } from "../types/types";
 
-
 export const refrescarPreguntas = (event: any) => ({
     type: types.refreshQuestions,
     payload:event

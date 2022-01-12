@@ -3,12 +3,15 @@ import { useNavigate } from "react-router-dom";
 import { useGame } from "../hooks/useGame";
 import { MainCont, MyButton, RuletaInit, Subtitle, Title } from "../styled/styledComponents";
 import imgRuleta from '../assets/ruleta.png';
+import { useSelector } from "react-redux";
 
 export const InitPage = () => {
 
     const navigate = useNavigate();
 
-    const { handleStartGame, isLoading } = useGame();
+    const { questions, score } = useSelector((state:any) => state.game);
+
+    const { handleStartGame, isLoading } = useGame(questions, score);
 
     useEffect(() => {
         if(localStorage.getItem('gameStatus') && localStorage.getItem('lastView')) {
@@ -25,7 +28,7 @@ export const InitPage = () => {
             <Title> TRIVIDABO </Title>
             <RuletaInit animated={isLoading ? true : false} src={imgRuleta} alt="roto" />
             <Subtitle> Welcome to trividabo number quiz !</Subtitle>
-            <MyButton onClick={handleStartGame}>Start</MyButton>
+            <MyButton id="start-btn" onClick={handleStartGame}>Start</MyButton>
         </MainCont>
     )
 }
